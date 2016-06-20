@@ -16,14 +16,14 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import com.bojue.chapterTwo.util.CollectionUtil;
 import com.bojue.chapterTwo.util.PropsUtil;
 
 public class DatabaseHelper {
 
-//	private static Logger log = Logger.getLogger(DatabaseHelper.class);
+	private static Logger log = Logger.getLogger(DatabaseHelper.class);
 
 	private static final QueryRunner QUERY_RUNNER;
 
@@ -57,7 +57,7 @@ public class DatabaseHelper {
 			entityList = QUERY_RUNNER.query(conn, sql, new BeanListHandler<T>(
 					entityClass), params);
 		} catch (Exception e) {
-//			log.error("query entity list failure", e);
+			log.error("query entity list failure", e);
 			throw new RuntimeException(e);
 		} finally {
 			closeConnection();
@@ -75,7 +75,7 @@ public class DatabaseHelper {
 			entity = QUERY_RUNNER.query(conn, sql, new BeanHandler<T>(
 					entityClass), params);
 		} catch (Exception e) {
-//			log.error("query entity failure", e);
+			log.error("query entity failure", e);
 			throw new RuntimeException(e);
 		} finally {
 			closeConnection();
@@ -91,7 +91,7 @@ public class DatabaseHelper {
 			Connection conn = getConnection();
 			result = QUERY_RUNNER.query(conn, sql, new MapListHandler(), params);
 		} catch (Exception e) {
-//			log.error("execute query failure", e);
+			log.error("execute query failure", e);
 			throw new RuntimeException(e);
 		} finally {
 			closeConnection();
@@ -106,7 +106,7 @@ public class DatabaseHelper {
 			Connection conn = getConnection();
 			rows = QUERY_RUNNER.update(conn, sql, params);
 		} catch (Exception e) {
-//			log.error("execute update failure", e);
+			log.error("execute update failure", e);
 			throw new RuntimeException(e);
 		} finally {
 			closeConnection();
@@ -118,7 +118,7 @@ public class DatabaseHelper {
 	public static <T> boolean updateEntity(Class<T> entityClass, long id, Map<String, Object> fieldMap) {
 		
 		if(CollectionUtil.isEmpty(fieldMap)){
-//			log.error("can not update entity: fieldMap is empty");
+			log.error("can not update entity: fieldMap is empty");
 			return false;
 		}
 		StringBuilder columns = new StringBuilder();
@@ -136,7 +136,7 @@ public class DatabaseHelper {
 	
 	public static <T> boolean insertEntity(Class<T> entityClass, Map<String,Object> fieldMap){
 		if(CollectionUtil.isEmpty(fieldMap)){
-//			log.error("can not update entity: fieldMap is empty");
+			log.error("can not update entity: fieldMap is empty");
 			return false;
 		}
 		StringBuilder columns = new StringBuilder();
@@ -169,7 +169,7 @@ public class DatabaseHelper {
 			try {
 				conn = DATA_SOURCE.getConnection();
 			} catch (Exception e) {
-//				log.error("execute sql failure", e);
+				log.error("execute sql failure", e);
 				throw new RuntimeException(e);
 			} finally {
 				CONNECTION_HOLDER.set(conn);
@@ -184,7 +184,7 @@ public class DatabaseHelper {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-//				log.error("close connection failure", e);
+				log.error("close connection failure", e);
 			} finally {
 				CONNECTION_HOLDER.remove();
 			}
@@ -200,7 +200,7 @@ public class DatabaseHelper {
 				executeUpdate(sql);
 			}
 		} catch (Exception e) {
-//			log.error("execute sql file failure", e);
+			log.error("execute sql file failure", e);
 			throw new RuntimeException(e);
 		}
 	}

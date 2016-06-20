@@ -41,15 +41,15 @@ table.gridtable td {
 			<th>邮箱地址</th>
 			<th>操作</th>
 		</tr>
-		<c:forEach varStatus="customer" items="${customerList }">
+		<c:forEach var="obj" items="${customerList }">
 			<tr>
-				<td>${customer.name }</td>
-				<td>${customer.contact }</td>
-				<td>${customer.telephone }</td>
-				<td>${customer.email }</td>
+				<td>${obj.name }</td>
+				<td>${obj.contact }</td>
+				<td>${obj.telephone }</td>
+				<td>${obj.email }</td>
 				<td>
-					<a href="${BASE}/customer_edit?id=${customer.id }">编辑</a>
-					<a href="${BASE}/customer_del?id=${customer.id }">删除</a>
+					<a href="${BASE}/customer_edit?id=${obj.id }">编辑</a>
+					<a href="${BASE}/customer_del?id=${obj.id }">删除</a>
 				</td>
 			</tr>
 		</c:forEach>	

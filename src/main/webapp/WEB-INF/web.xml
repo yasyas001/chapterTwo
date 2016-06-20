@@ -2,26 +2,4 @@
 <web-app id="WebApp_ID" version="3.0"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-<!-- 
-	<jsp-config>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
-			<taglib-location>/WEB-INF/c.tld</taglib-location>
-		</taglib>
-
-		<taglib>
-			<taglib-uri>http://java.sun.com/jsp/jstl/xml</taglib-uri>
-			<taglib-location>/WEB-INF/x.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
-			<taglib-location>/WEB-INF/fmt.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>http://java.sun.com/jsp/jstl/sql</taglib-uri>
-			<taglib-location>/WEB-INF/sql.tld</taglib-location>
-		</taglib>
-
-	</jsp-config> -->
 </web-app>

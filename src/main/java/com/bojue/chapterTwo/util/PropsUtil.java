@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 public class PropsUtil {
 	
-//	private static final Logger log = Logger.getLogger(PropsUtil.class);
+	private static final Logger log = Logger.getLogger(PropsUtil.class);
 	/**
 	 * 加载属性文件
 	 * @param fileName
@@ -20,20 +20,20 @@ public class PropsUtil {
 		Properties props = null;
 		InputStream inputStream = null;
 		try {
-			inputStream = ClassLoader.getSystemResourceAsStream(fileName);
+			inputStream = PropsUtil.class.getResourceAsStream((fileName.indexOf("/")!=0 ? "/" : "") + fileName);
 			if(inputStream == null){
 				throw new FileNotFoundException(fileName +" file is not found!");
 			}
 			props = new Properties();
 			props.load(inputStream);
 		} catch (IOException e) {
-//			log.error("load properties file failure", e);
+			log.error("load properties file failure", e);
 		}finally {
 			if(inputStream != null){
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-//					log.error("close input stream failure", e);
+					log.error("close input stream failure", e);
 				}
 			}
 		}
